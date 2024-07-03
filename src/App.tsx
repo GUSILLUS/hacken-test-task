@@ -6,6 +6,7 @@ import { Table, Pagination, Layout, Typography, Space, Select, Image, Divider, S
 import CodeMirror from '@uiw/react-codemirror';
 import toast, { Toaster } from 'react-hot-toast';
 import { ColumnType } from 'antd/es/table';
+import { javascript } from '@codemirror/lang-javascript';
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -208,7 +209,7 @@ const App: React.FC = () => {
 
           <CodeMirror
             theme="light"
-            value={`// App.tsx\n${code}`}
+            value={code}
             style={{ marginTop: '20px' }}
             contentEditable
             spellCheck={false}
@@ -216,6 +217,7 @@ const App: React.FC = () => {
             autoCorrect="off"
             translate="no"
             maxHeight="1000px"
+            extensions={[[javascript({ typescript: true, jsx: true })]]}
           />
 
           <Toaster />
@@ -225,13 +227,15 @@ const App: React.FC = () => {
   );
 };
 
-const code: string = `import React, { useState } from 'react';
+const code: string = `// App.tsx
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { Table, Pagination, Layout, Typography, Space, Select, Image, Divider, Spin } from 'antd';
 import CodeMirror from '@uiw/react-codemirror';
 import toast, { Toaster } from 'react-hot-toast';
 import { ColumnType } from 'antd/es/table';
+import { javascript } from '@codemirror/lang-javascript';
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -434,7 +438,7 @@ const App: React.FC = () => {
 
           <CodeMirror
             theme="light"
-            value={\`// App.tsx\n\${code}\`}
+            value={code}
             style={{ marginTop: '20px' }}
             contentEditable
             spellCheck={false}
@@ -442,6 +446,7 @@ const App: React.FC = () => {
             autoCorrect="off"
             translate="no"
             maxHeight="1000px"
+            extensions={[[javascript({ typescript: true, jsx: true })]]}
           />
 
           <Toaster />
